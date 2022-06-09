@@ -5,10 +5,29 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export const AppDataSource = new DataSource({
-  type: "postgres",
-  url: process.env.DB_URI_DEV,
-  logging: true,
-  entities: [path.join(__dirname, "./entities/**/*.{js,ts}")],
-  migrations: [path.join(__dirname, "./migrations/**/*.{js,ts}")],
-});
+export const AppDataSource =
+  process.env.NODE_ENV === "test"
+    ? new DataSource({
+        type: "sqlite",
+        database: ":memory:",
+        entities: [path.join(__dirname, "/entities/*.ts")],
+        synchronize: true,
+      })
+    : new DataSource({
+        type: "postgres",
+        url: process.env.DATABASE_URL,
+        ssl:
+          process.env.NODE_ENV === "production"
+            ? { rejectUnauthorized: false }
+            : false,
+        synchronize: false,
+        logging: true,
+        entities:
+          process.env.NODE_ENV === "production"
+            ? ["dist/src/entities/*.js"]
+            : ["src/entities/*.ts"],
+        migrations:
+          process.env.NODE_ENV === "production"
+            ? ["dist/src/migrations/*.js"]
+            : ["src/migrations/*.ts"],
+      });

@@ -1,6 +1,10 @@
 import { Router } from "express";
 import { courseController } from "../controllers";
-import { validateSchema, validateToken, verifyPermission } from "../middlewares";
+import {
+  validateSchema,
+  validateToken,
+  verifyPermission,
+} from "../middlewares";
 import { courseSchema, courseUpdateSchema } from "../schemas";
 
 const courseRouter = Router();
@@ -19,6 +23,11 @@ courseRouter.patch(
   verifyPermission,
   validateSchema(courseUpdateSchema),
   courseController.updateCourse
+);
+courseRouter.post(
+  "/courses/:id/users",
+  validateToken,
+  courseController.inscribeUser
 );
 
 export default courseRouter;
