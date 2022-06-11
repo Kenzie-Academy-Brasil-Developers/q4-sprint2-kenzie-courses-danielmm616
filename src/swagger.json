@@ -59,7 +59,7 @@
               "application/json": {
                 "examples": {
                   "With access Token and admin user": {
-                    "value": "[\n\t{\n\t\t\"updatedAt\": \"2022-06-05T18:56:21.876Z\",\n\t\t\"createdAt\": \"2022-06-05T18:56:21.876Z\",\n\t\t\"isAdm\": true,\n\t\t\"email\": \"akira@mail.com\",\n\t\t\"lastName\": \"San\",\n\t\t\"firstName\": \"akira\",\n\t\t\"id\": \"f5bc5dd6-bba6-4001-a069-ba850427acad\"\n\t},\n\t{\n\t\t\"updatedAt\": \"2022-06-05T18:56:21.876Z\",\n\t\t\"createdAt\": \"2022-06-05T18:56:21.876Z\",\n\t\t\"isAdm\": false,\n\t\t\"email\": \"miuki@mail.com\",\n\t\t\"lastName\": \"San\",\n\t\t\"firstName\": \"miuki\",\n\t\t\"id\": \"a124a50b-fbaf-471b-a7ec-d46306f3abb4\"\n\t}\n]"
+                    "value": "[\n\t{\n\t\t\"updatedAt\": \"2022-06-11T14:56:21.876Z\",\n\t\t\"createdAt\": \"2022-06-05T14:56:21.876Z\",\n\t\t\"isAdm\": true,\n\t\t\"email\": \"nixolas@kenzie.com\",\n\t\t\"firstName\": \"Nic\",\n\t\t\"lastName\": \"Ano\",\n\t\t\"id\": \"f5bc5dd6-bba6-4001-a069-ba850427acad\"\n\t},\n\t{\n\t\t\"updatedAt\": \"2022-06-11T15:56:21.876Z\",\n\t\t\"createdAt\": \"2022-06-11T15:56:21.876Z\",\n\t\t\"isAdm\": false,\n\t\t\"email\": \"marcelo@kenzie.com\",\n\t\t\"firstName\": \"Mark\",\n\t\t\"lastName\": \"Rominho\",\n\t\t\"id\": \"a124a50b-fbaf-471b-a7ec-d46306f3abb4\"\n\t}\n]"
                   }
                 }
               }
@@ -227,7 +227,7 @@
               "application/json": {
                 "examples": {
                   "Course created successfully": {
-                    "value": "{\n\t\"courseName\": \"Geography\",\n\t\"duration\": \"2 meses\",\n\t\"id\": \"92c6e00f-4e1a-43b2-a028-8c983000007c\"\n}"
+                    "value": "{\n\t\"courseName\": \"English\",\n\t\"duration\": \"6 months\",\n\t\"id\": \"92c6e00f-4e1a-43b2-a028-8c983000007c\"\n}"
                   }
                 }
               }
@@ -238,6 +238,28 @@
           },
           "401": {
             "$ref": "#/components/responses/NotAdmin"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get all courses",
+        "description": "Get all courses, need Token authorization",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "With access Token": {
+                    "value": "{\n\t\"courses\": [\n\t\t{\n\t\t\t\"courseName\": \"English\",\n\t\t\t\"duration\": \"6 months\",\n\t\t\t\"id\": \"56r4f16h-3b1c-15a2-w384-3a129506704q\"\n\t\t},\n\t\t{\n\t\t\t\"courseName\": \"FrontEnd\",\n\t\t\t\"duration\": \"1 year\",\n\t\t\t\"id\": \"92c6e00f-4e1a-43b2-a028-8c983000007c\"\n\t\t}\n\t]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/MissingToken"
           }
         }
       }
@@ -274,7 +296,7 @@
               "application/json": {
                 "examples": {
                   "Course created successfully": {
-                    "value": "{\n\t\"courseName\": \"Geography\",\n\t\"duration\": \"2 meses\",\n\t\"id\": \"92c6e00f-4e1a-43b2-a028-8c983000007c\"\n}"
+                    "value": "{\n\t\"courseName\": \"FrontEnd\",\n\t\"duration\": \"1 year\",\n\t\"id\": \"92c6e00f-4e1a-43b2-a028-8c983000007c\"\n}"
                   }
                 }
               }
@@ -443,7 +465,7 @@
     },
     "examples": {
       "UserCreated": {
-        "value": "{\n\t\"courses\": [],\n\t\"updatedAt\": \"2022-06-05T20:20:36.500Z\",\n\t\"createdAt\": \"2022-06-05T20:20:36.500Z\",\n\t\"isAdm\": false,\n\t\"email\": \"jaum@mail.com\",\n\t\"lastName\": \"San\",\n\t\"firstName\": \"jaum\",\n\t\"id\": \"797105cb-6d3b-403c-b642-877601d74182\"\n}"
+        "value": "{\n\t\"courses\": [],\n\t\"updatedAt\": \"2022-06-11T11:20:36.500Z\",\n\t\"createdAt\": \"2022-06-11T11:20:36.500Z\",\n\t\"isAdm\": false,\n\t\"email\": \"nixolas@kenzie.com\",\n\t\"firstName\": \"Nic\",\n\t\"lastName\": \"Ano\",\n\t\"id\": \"797105cb-6d3b-403c-b642-877601d74182\"\n}"
       }
     },
     "schemas": {
